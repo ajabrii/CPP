@@ -1,7 +1,7 @@
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = phoneBook
-SRC = Main.cpp Setters_Getters
+SRC = main.cpp pb.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
