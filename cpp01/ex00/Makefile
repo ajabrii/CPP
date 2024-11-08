@@ -1,7 +1,7 @@
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = bank
-SRC =  tests.cpp Account.cpp    Account.cpp
+NAME = Zombie
+SRC = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
