@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:26:13 by kali              #+#    #+#             */
-/*   Updated: 2024/11/06 14:57:01 by kali             ###   ########.fr       */
+/*   Updated: 2024/11/08 14:47:24 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int main() {
     while (true) {
         std::cout << "Enter command (ADD, SEARCH, EXIT): ";
         std::getline(std::cin, command);
-
+        if (std::cin.eof())
+            break;
         if (command == "ADD") {
             phoneBook.AddContact();
         } else if (command == "SEARCH") {
@@ -35,3 +36,6 @@ int main() {
     return 0;
 }
 
+//! check the contact info if it's empty or not if it's empty it will display "EMPTY" else it will display the contact info
+//!check why when i enter the index number it displays command not found.
+//
