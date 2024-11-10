@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pb.cpp                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:26:37 by kali              #+#    #+#             */
-/*   Updated: 2024/11/06 14:56:08 by kali             ###   ########.fr       */
+/*   Updated: 2024/11/09 14:08:34 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void PhoneBook::SearchContacts() const {
               << std::setw(10) << "Last Name" << "|"
               << std::setw(10) << "Nickname" << std::endl;
     std::cout << "---------------------------------------------" << std::endl;
-
     for (int i = 0; i < NumContacts; i++) {
         std::cout << std::setw(10) << i << "|"
                   << std::setw(10) << Contacts[i].GetFirstName() << "|"
@@ -59,10 +58,17 @@ void PhoneBook::SearchContacts() const {
     }
 
     std::cout << "Enter the index of the contact to view details: ";
-    int index;
-    std::cin >> index;
-    if (index >= 0 && index < NumContacts) {
-        Contacts[index].DisplayContact();
+    std::string index;
+
+    std::getline(std::cin, index);
+    if (std::cin.eof())
+        return;
+    if (!isdigit(index[0])) {
+        std::cout << "Invalid index!" << std::endl;
+        return;
+    }
+    if (std::atoi(index.c_str()) >= 0 && std::atoi(index.c_str()) < NumContacts) {
+        Contacts[std::atoi(index.c_str())].DisplayContact();
     } else {
         std::cout << "Invalid index!" << std::endl;
     }

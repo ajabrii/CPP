@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:26:13 by kali              #+#    #+#             */
-/*   Updated: 2024/11/08 14:47:24 by ajabri           ###   ########.fr       */
+/*   Updated: 2024/11/09 13:30:17 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ int main() {
 }
 
 //! check the contact info if it's empty or not if it's empty it will display "EMPTY" else it will display the contact info
-//!check why when i enter the index number it displays command not found.
-//
+//* DONE : check why when i enter the index number it displays command not found. //*done
+//! TODO: fix when the contact are more than test it
