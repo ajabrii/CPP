@@ -6,13 +6,14 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:25:56 by ajabri            #+#    #+#             */
-/*   Updated: 2024/11/10 12:28:01 by ajabri           ###   ########.fr       */
+/*   Updated: 2024/11/10 12:36:33 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "HumanA.hpp"
 # include "HumanB.hpp"
 
+//! Read more about the Reference Initialization in C++ here: https://en.cppreference.com/w/cpp/language/reference_initialization
 int main()
 {
     {
