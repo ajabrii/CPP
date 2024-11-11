@@ -1,7 +1,7 @@
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Replace
-SRC = main.cpp Replace.cpp
+SRC =  Replace.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
