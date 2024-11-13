@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:26:13 by kali              #+#    #+#             */
-/*   Updated: 2024/11/09 13:30:17 by ajabri           ###   ########.fr       */
+/*   Updated: 2024/11/13 11:47:44 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ int main() {
         } else if (command == "EXIT") {
             std::cout << "Exiting... Contacts will be lost!" << std::endl;
             break;
-        } else {
+        } else if (command.empty())
+                continue;
+        else {
             std::cout << "Invalid command!" << std::endl;
         }
     }
-
     return 0;
 }
 

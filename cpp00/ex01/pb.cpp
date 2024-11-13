@@ -6,23 +6,47 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:26:37 by kali              #+#    #+#             */
-/*   Updated: 2024/11/09 14:08:34 by ajabri           ###   ########.fr       */
+/*   Updated: 2024/11/13 14:10:45 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phone.hpp"
 
-void Contact::SetContact() {
+
+
+int Contact::IsPrintable(std::string str) const {
+    for (size_t i = 0; i < str.length(); i++) {
+        if (!std::isprint((int)str[i])) {
+          std::cout << "Non printable character found!" << std::endl;
+            return 0;
+        }
+    }
+    return 1;
+}
+
+
+bool Contact::SetContact() {
     std::cout << "Enter First Name: ";
     std::getline(std::cin, FirstName);
+    if (!this->IsPrintable(FirstName))
+        return false;
     std::cout << "Enter Last Name: ";
     std::getline(std::cin, LastName);
+    if (!this->IsPrintable(LastName))
+        return false;
     std::cout << "Enter Nickname: ";
     std::getline(std::cin, NickName);
+    if (!this->IsPrintable(NickName))
+        return false;
     std::cout << "Enter Phone Number: ";
     std::getline(std::cin, PhoneNumber);
+    if (!this->IsPrintable(PhoneNumber))
+        return false;
     std::cout << "Enter Darkest Secret: ";
     std::getline(std::cin, DarkestSecret);
+   if (!this->IsPrintable(DarkestSecret))
+        return false;
+    return true;
 }
 
 void Contact::DisplayContact() const {
@@ -35,7 +59,8 @@ void Contact::DisplayContact() const {
 
 void PhoneBook::AddContact() {
     if (NumContacts < 8) {
-        Contacts[NumContacts].SetContact();
+        if (!Contacts[NumContacts].SetContact())
+            return ;
         NumContacts++;
     } else {
         Contacts[OldestIndex].SetContact();
@@ -73,3 +98,4 @@ void PhoneBook::SearchContacts() const {
         std::cout << "Invalid index!" << std::endl;
     }
 }
+

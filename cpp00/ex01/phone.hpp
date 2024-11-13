@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phone.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:27:23 by kali              #+#    #+#             */
-/*   Updated: 2024/11/06 14:50:37 by kali             ###   ########.fr       */
+/*   Updated: 2024/11/13 14:07:52 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ class Contact {
         std::string DarkestSecret;
 
     public:
-        void SetContact();// had l function can set the contact info
+        bool SetContact();// had l function can set the contact info
         void DisplayContact() const;// hadi it just displays the infos and //!const means bli it can't modify the class members
         //*those are getters :
         std::string GetFirstName() const { return FirstName; }
         std::string GetLastName() const { return LastName; }
         std::string GetNickName() const { return NickName; }
+        int IsPrintable(std::string str) const;
 };
 
 class PhoneBook {
