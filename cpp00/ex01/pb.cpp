@@ -6,56 +6,11 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:26:37 by kali              #+#    #+#             */
-/*   Updated: 2024/11/13 14:10:45 by ajabri           ###   ########.fr       */
+/*   Updated: 2024/11/13 14:43:33 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phone.hpp"
-
-
-
-int Contact::IsPrintable(std::string str) const {
-    for (size_t i = 0; i < str.length(); i++) {
-        if (!std::isprint((int)str[i])) {
-          std::cout << "Non printable character found!" << std::endl;
-            return 0;
-        }
-    }
-    return 1;
-}
-
-
-bool Contact::SetContact() {
-    std::cout << "Enter First Name: ";
-    std::getline(std::cin, FirstName);
-    if (!this->IsPrintable(FirstName))
-        return false;
-    std::cout << "Enter Last Name: ";
-    std::getline(std::cin, LastName);
-    if (!this->IsPrintable(LastName))
-        return false;
-    std::cout << "Enter Nickname: ";
-    std::getline(std::cin, NickName);
-    if (!this->IsPrintable(NickName))
-        return false;
-    std::cout << "Enter Phone Number: ";
-    std::getline(std::cin, PhoneNumber);
-    if (!this->IsPrintable(PhoneNumber))
-        return false;
-    std::cout << "Enter Darkest Secret: ";
-    std::getline(std::cin, DarkestSecret);
-   if (!this->IsPrintable(DarkestSecret))
-        return false;
-    return true;
-}
-
-void Contact::DisplayContact() const {
-    std::cout << "First Name: " << FirstName << "\n"
-              << "Last Name: " << LastName << "\n"
-              << "Nickname: " << NickName << "\n"
-              << "Phone Number: " << PhoneNumber << "\n"
-              << "Darkest Secret: " << DarkestSecret << "\n";
-}
+#include "PhoneBook.hpp"
 
 void PhoneBook::AddContact() {
     if (NumContacts < 8) {
@@ -69,17 +24,25 @@ void PhoneBook::AddContact() {
     std::cout << "Contact added successfully!\n";
 }
 
+std::string TruncateString(const std::string& str) {
+    if (str.length() > 9) {
+        return str.substr(0, 9) + ".";
+    }
+    return str;
+}
+
 void PhoneBook::SearchContacts() const {
     std::cout << std::setw(10) << "Index" << "|"
               << std::setw(10) << "First Name" << "|"
               << std::setw(10) << "Last Name" << "|"
               << std::setw(10) << "Nickname" << std::endl;
     std::cout << "---------------------------------------------" << std::endl;
+
     for (int i = 0; i < NumContacts; i++) {
         std::cout << std::setw(10) << i << "|"
-                  << std::setw(10) << Contacts[i].GetFirstName() << "|"
-                  << std::setw(10) << Contacts[i].GetLastName() << "|"
-                  << std::setw(10) << Contacts[i].GetNickName() << std::endl;
+                  << std::setw(10) << TruncateString(Contacts[i].GetFirstName()) << "|"
+                  << std::setw(10) << TruncateString(Contacts[i].GetLastName()) << "|"
+                  << std::setw(10) << TruncateString(Contacts[i].GetNickName()) << std::endl;
     }
 
     std::cout << "Enter the index of the contact to view details: ";
@@ -98,4 +61,3 @@ void PhoneBook::SearchContacts() const {
         std::cout << "Invalid index!" << std::endl;
     }
 }
-
