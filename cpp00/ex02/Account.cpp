@@ -6,12 +6,14 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:29:31 by ajabri            #+#    #+#             */
-/*   Updated: 2024/11/11 14:07:01 by ajabri           ###   ########.fr       */
+/*   Updated: 2024/11/13 14:56:18 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Account.hpp"
 #include <iostream>
+#include <ctime>
+#include <iomanip>
 
 int		Account::_nbAccounts = 0;
 int		Account::_totalAmount = 0;
@@ -38,9 +40,19 @@ int Account::getNbWithdrawals( void )
     return (_totalNbWithdrawals);
 }
 
-void Account::_displayTimestamp( void )
+void Account::_displayTimestamp(void)
 {
-    std::cout << "[2024/11/08_10:29:31] ";
+    std::time_t now = std::time(nullptr);
+    std::tm *ltm = std::localtime(&now);
+
+    std::cout << '['
+              << 1900 + ltm->tm_year
+              << std::setw(2) << std::setfill('0') << ltm->tm_mon + 1
+              << std::setw(2) << std::setfill('0') << ltm->tm_mday << '_'
+              << std::setw(2) << std::setfill('0') << ltm->tm_hour
+              << std::setw(2) << std::setfill('0') << ltm->tm_min
+              << std::setw(2) << std::setfill('0') << ltm->tm_sec
+              << "] ";
 }
 
 Account::Account( int initial_deposit )
