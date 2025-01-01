@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 11:31:06 by ajabri            #+#    #+#             */
-/*   Updated: 2024/12/27 14:32:24 by ajabri           ###   ########.fr       */
+/*   Created: 2024/12/27 14:38:43 by ajabri            #+#    #+#             */
+/*   Updated: 2024/12/28 16:32:20 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,29 @@ const Harl::Level Harl::lvs[4] = {
     {"ERROR", &Harl::error}
 };
 
-void Harl::complain(std::string level) {
+
+int Harl::getIndex(std::string level) {
     for (int i = 0; i < 4; ++i) {
-        if (lvs[i].lvl == level) {
-            (this->*lvs[i].ft)();
-            return;
-        }
+        if (this->lvs[i].lvl == level)
+            return (i);
     }
-    std::cout << DEFAULT;
+    return (-1);
+}
+void Harl::complain(std::string level) {
+
+    int indx = getIndex(level);
+    switch (indx)
+    {
+        case 0:
+            (this->*lvs[0].ft)();
+        case 1:
+            (this->*lvs[1].ft)();
+         case 2:
+            (this->*lvs[2].ft)();
+        case 3:
+            (this->*lvs[3].ft)();
+            break;
+        default:
+            std::cout << DEFAULT;
+    }
 }

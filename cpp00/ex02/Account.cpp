@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:29:31 by ajabri            #+#    #+#             */
-/*   Updated: 2024/11/13 14:56:18 by ajabri           ###   ########.fr       */
+/*   Updated: 2024/12/25 17:08:08 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <ctime>
 #include <iomanip>
 
-int		Account::_nbAccounts = 0;
+int     Account::_nbAccounts = 0;
 int		Account::_totalAmount = 0;
 int		Account::_totalNbDeposits = 0;
 int		Account::_totalNbWithdrawals = 0;
@@ -42,7 +42,7 @@ int Account::getNbWithdrawals( void )
 
 void Account::_displayTimestamp(void)
 {
-    std::time_t now = std::time(nullptr);
+    std::time_t now = std::time(NULL);
     std::tm *ltm = std::localtime(&now);
 
     std::cout << '['
@@ -96,9 +96,9 @@ void Account::displayStatus( void ) const
 bool Account::makeWithdrawal(int withdrawal)
 {
     _displayTimestamp();
-    std::cout << "index:" << _accountIndex << ";p_amount:" << _amount << ";withdrawal:" << withdrawal;
     if (_amount >= withdrawal)
     {
+    std::cout << "index:" << _accountIndex << ";p_amount:" << _amount << ";withdrawal:" << withdrawal;
         _amount -= withdrawal;
         _totalAmount -= withdrawal;
         _nbWithdrawals++;
@@ -106,6 +106,7 @@ bool Account::makeWithdrawal(int withdrawal)
         std::cout << ";amount:" << _amount << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
         return (true);
     }
+    std::cout << "index:" << _accountIndex << ";p_amount:" << _amount << ";withdrawal:";
     std::cout << "refused" << std::endl;
     return (false);
 }

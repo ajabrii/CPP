@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 12:23:08 by ajabri            #+#    #+#             */
-/*   Updated: 2024/11/10 12:24:53 by ajabri           ###   ########.fr       */
+/*   Updated: 2024/12/28 16:14:32 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ class HumanB
     public:
         HumanB(std::string name);
         void attack(void);
-        void setWeapon(Weapon weapon);
+        void setWeapon(Weapon *weapon);
     private:
         std::string name;
         Weapon *weapon;
 };
+
 
 # endif 

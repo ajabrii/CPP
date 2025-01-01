@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 11:31:24 by ajabri            #+#    #+#             */
-/*   Updated: 2024/12/26 16:06:07 by ajabri           ###   ########.fr       */
+/*   Created: 2024/12/30 14:26:18 by ajabri            #+#    #+#             */
+/*   Updated: 2024/12/30 15:37:29 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef WEAPON_HPP
-#define WEAPON_HPP 
+# ifndef FIXED_HPP
+#define FIXED_HPP
 
+# define _FRACTIONAL_BIT 8
 # include <iostream>
+# include <cstring>
 
-class Weapon
+class Fixed
 {
-    public:
-        Weapon(std::string type);
-        const std::string &getType(void) const;
-        void setType(std::string type);
     private:
-        std::string type;
+        int m_Fixednum;
+        static const int m_FractionalBits;
+    public:
+        Fixed();
+        Fixed(const Fixed& others); //? memcpy(this, &other, sizeof(Fixed)); this is deep copy 
+        Fixed& operator=(const Fixed& others);
+        ~Fixed();
+        int getRawBits( void ) const;
+        void setRawBits( int const raw );
+    
 };
+
 #endif

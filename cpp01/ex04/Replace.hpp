@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 14:11:25 by ajabri            #+#    #+#             */
-/*   Updated: 2024/11/11 12:07:38 by ajabri           ###   ########.fr       */
+/*   Updated: 2024/12/29 10:57:14 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <string>
 
 
-
 class Replace
 {
     private:
@@ -27,10 +26,7 @@ class Replace
         std::string s1;
         std::string s2;
         std::string content;
-        // int        pos;
-        // int        len;
     public:
-        Replace();
         Replace(std::string filename, std::string s1, std::string s2);
         void ThrowError(std::string error);
         void OpenInFile(std::ifstream &inFile);

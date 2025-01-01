@@ -5,40 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 14:26:13 by kali              #+#    #+#             */
-/*   Updated: 2024/11/13 14:46:17 by ajabri           ###   ########.fr       */
+/*   Created: 2024/12/22 16:57:21 by ajabri            #+#    #+#             */
+/*   Updated: 2024/12/25 14:14:09 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+# include "PhoneBook.hpp"
 
-int main() {
-    PhoneBook phoneBook;
-    std::string command;
+int main(void) {
 
+    PhoneBook phonebook;
+    
     while (true) {
-        std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-        std::getline(std::cin, command);
-        if (std::cin.eof())
+        std::cout << PROMPT;
+        std::getline(std::cin, phonebook.line);
+        if (std::cin.eof()) {
+            std::cout << "\n";
             break;
-        if (command == "ADD") {
-            phoneBook.AddContact();
-        } else if (command == "SEARCH") {
-            phoneBook.SearchContacts();
-        } else if (command == "EXIT") {
-            std::cout << "Exiting... Contacts will be lost!" << std::endl;
-            break;
-        } else if (command.empty())
-                continue;
-        else {
-            std::cout << "Invalid command! `"<< command << "'" << std::endl;
+        } if (phonebook.line.empty() 
+            || !phonebook.getcontact().IsPrintable(phonebook.line)) {
+            continue;
+        } else if (phonebook.line == ADD) {
+            if (!phonebook.AddContacts()) {
+                std::cout << "\n";
+                break ;
+            }
+        } else if (phonebook.line == SEARCH) {
+            if (!phonebook.SearchContacts()) {
+                std::cout << "\n";
+                break ;
+            }
+        } else if (phonebook.line == EXIT) {
+            std::cout << LOGOUT_MSG;
+            return (0);
+        } else {
+            std::cout << "\033[1;31mWrong `" << phonebook.line << "' is invalid command!\n\033[0m";
         }
     }
-    return 0;
+    return (0);
 }
-
-//TODO: i need to set a header file for each class
-
-//@DONE:  check the contact info if it's empty or not if it's empty it will display "EMPTY" else it will display the contact info
-//@ DONE : check why when i enter the index number it displays command not found.
-//@DONE: fix when the contact are more than test it

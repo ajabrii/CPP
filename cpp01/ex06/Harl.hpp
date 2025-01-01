@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/27 11:20:40 by ajabri            #+#    #+#             */
-/*   Updated: 2024/12/28 16:24:47 by ajabri           ###   ########.fr       */
+/*   Created: 2024/12/27 14:38:23 by ajabri            #+#    #+#             */
+/*   Updated: 2024/12/27 15:48:31 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define HARL_HPP
 
 # include <iostream>
-# define DEFAULT "[DEFAULT] :: Default case\n"
+# define DEFAULT "[ Probably complaining about insignificant problems ]\n"
 # define DEBUG "[DEBUG] :: Debug\n"
 # define INFO "[INFO] :: Info\n"
 # define WARRNING "[WARNING] :: Warning\n"
@@ -30,12 +30,12 @@ class Harl {
         
         struct Level {
             std::string lvl;
-            void (Harl::*ft)(void);
+            void (Harl::*ft)();
         };
         static const Level lvs[4];
     public:
         void complain( std::string level );
-    
+        int getIndex(std::string level);
 };
 
 #endif

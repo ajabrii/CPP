@@ -1,4 +1,4 @@
-CC = c++
+CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = mainRef
 SRCS = main.cpp
@@ -6,7 +6,7 @@ OBJ = $(SRCS:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	@$(CXX) $(CPPFLAGS) $(OBJ) -o $(NAME)
 clean: $(OBJ)
 	@rm -f $(OBJ)
 fclean: clean
