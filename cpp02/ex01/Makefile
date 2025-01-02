@@ -1,6 +1,6 @@
 CXX = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = Fixed
+NAME = FixedPoint
 SRC = main.cpp Fixed.cpp
 OBJ = $(SRC:.cpp=.o)
 

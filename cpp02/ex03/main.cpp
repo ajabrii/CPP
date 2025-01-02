@@ -3,29 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/01 15:53:20 by kali              #+#    #+#             */
-/*   Updated: 2025/01/01 15:53:56 by kali             ###   ########.fr       */
+/*   Created: 2025/01/02 13:32:38 by ajabri            #+#    #+#             */
+/*   Updated: 2025/01/02 18:57:48 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Point.hpp"
-#include "bsp.cpp"
-#include <iostream>
+# include "Point.hpp"
 
-int main() {
-    Point a(0, 0);
-    Point b(4, 0);
-    Point c(0, 4);
+int main ()
+{
+    Point a(1, 1);
+    Point b(3, 2);
+    Point c(2, 3);
+    Point point(2, 2);
 
-    Point p1(1, 1); // Inside
-    Point p2(2, 2); // Inside
-    Point p3(5, 5); // Outside
-
-    std::cout << "Point p1 is " << (bsp(a, b, c, p1) ? "inside" : "outside") << " the triangle." << std::endl;
-    std::cout << "Point p2 is " << (bsp(a, b, c, p2) ? "inside" : "outside") << " the triangle." << std::endl;
-    std::cout << "Point p3 is " << (bsp(a, b, c, p3) ? "inside" : "outside") << " the triangle." << std::endl;
-
-    return 0;
+    if (bsp(a, b, c, point))
+        std::cout << "The point is inside the triangle" << std::endl;
+    else
+        std::cout << "The point is outside the triangle" << std::endl;
 }

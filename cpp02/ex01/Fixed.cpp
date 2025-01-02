@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:29:30 by ajabri            #+#    #+#             */
-/*   Updated: 2024/12/31 13:07:57 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/01/02 17:28:32 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ float Fixed::toFloat( void ) const
 
 int Fixed::getRawBits( void ) const
 {
-    // std::cout << "getRawBits member function called" << std::endl;
     return this->m_Fixednum;
 }
 

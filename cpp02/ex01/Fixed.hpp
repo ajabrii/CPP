@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 14:26:18 by ajabri            #+#    #+#             */
-/*   Updated: 2024/12/31 13:08:20 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/01/02 17:54:43 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ class Fixed
         Fixed(const float fnb);
         Fixed(const Fixed& others);
         Fixed& operator=(const Fixed& others);
-        friend std::ostream& operator<<(std::ostream& Os,const Fixed& others);
         ~Fixed();
         float toFloat( void ) const;
         int toInt( void ) const;
-         int getRawBits( void ) const;
+        int getRawBits( void ) const;
         void setRawBits( int const raw );
 };
 
+std::ostream& operator<<(std::ostream& Os,const Fixed& others);
 
 
 

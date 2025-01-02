@@ -3,33 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/01 15:47:45 by kali              #+#    #+#             */
-/*   Updated: 2025/01/01 15:50:10 by kali             ###   ########.fr       */
+/*   Created: 2025/01/02 12:05:27 by ajabri            #+#    #+#             */
+/*   Updated: 2025/01/02 18:51:20 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-#define POINT_HPP
+# ifndef POINT_HPP
+# define POINT_HPP
 
-#include "Fixed.hpp"
+# include "Fixed.hpp"
 
 class Point
 {
-private:
-    Fixed const X;
-    Fixed const Y;
+    private:
+        Fixed const x;
+        Fixed const y;
+    public:
+        Point() : x(0), y(0){};
+        Point(float const  x, float const  y) : x(x), y(y) {};
+        Point(const Point& other);
+         Point& operator=(const Point& other);
+         ~Point() {};
+        Fixed GetPointX() const;
+        Fixed GetPointY() const;
 
-public:
-    Point();
-    Point(float const x, float const y);
-    Point(Point const& other);
-    Point& operator=(Point const& other);
-    ~Point();
+        
 
-    Fixed getX() const;
-    Fixed getY() const;
 };
 
-#endif
+bool bsp( Point const a, Point const b, Point const c, Point const point);
+
+# endif
