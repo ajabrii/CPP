@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:32:38 by ajabri            #+#    #+#             */
-/*   Updated: 2025/01/02 18:57:48 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/01/03 09:25:03 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main ()
     Point b(3, 2);
     Point c(2, 3);
     Point point(2, 2);
+
 
     if (bsp(a, b, c, point))
         std::cout << "The point is inside the triangle" << std::endl;
