@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:01:19 by ajabri            #+#    #+#             */
-/*   Updated: 2025/01/11 11:47:35 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/01/11 16:09:03 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ Dog::Dog() : Animal()
     std::cout << "Dog Default constractor is called" << std::endl;
 }
 
-Dog::Dog(std::string type) 
-    : Animal(type)
+Dog::Dog(std::string type)
+    : Animal(type), brain(new Brain())
 {
     brain = new Brain();
     std::cout << "Dog constractor is called" << std::endl;
-    
+
 }
 
 Dog::Dog(const Dog& other)
-    : Animal(other) // new brain is not created
+    : Animal(other) , brain(new Brain(*other.brain))
 {
     std::cout << "Dog Copy constractor is called" << std::endl;
     *this = other;
@@ -40,6 +40,7 @@ Dog& Dog::operator=(const Dog& other)
     if (this == &other)
         return *this;
     this->type = other.type;
+    *brain = *other.brain;
     return (*this);
 }
 
@@ -57,4 +58,14 @@ void Dog::makeSound() const
 std::string Dog::getType( void ) const
 {
     return (this->type);
+}
+
+std::string Dog::getBIdea(int index) const
+{
+    return (brain->getIdea(index));
+}
+
+void Dog::setBIdea(int index, std::string idea)
+{
+    brain->setIdea(index, idea);
 }

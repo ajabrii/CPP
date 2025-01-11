@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:38:35 by ajabri            #+#    #+#             */
-/*   Updated: 2025/01/11 11:40:29 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/01/11 16:10:21 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 Brain::Brain()
 {
+    for (int i = 0; i < N_IDEA; i++)
+        ideas[i] = "No idea" + i;
     std::cout << "Brain constructor called" << std::endl;
 }
 
@@ -37,4 +39,17 @@ Brain& Brain::operator=(const Brain& other)
 Brain::~Brain()
 {
     std::cout << "Brain destructor called" << std::endl;
+}
+
+void Brain::setIdea(int index, std::string idea)
+{
+    if (index >= 0 && index < N_IDEA)
+        ideas[index] = idea;
+}
+
+std::string Brain::getIdea(int index) const
+{
+    if (index >= 0 && index < N_IDEA)
+        return (ideas[index]);
+    return ("");
 }

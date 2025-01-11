@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:00:24 by ajabri            #+#    #+#             */
-/*   Updated: 2025/01/11 11:57:35 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/01/11 16:08:42 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ class Dog : public Animal
         Dog& operator=(const Dog& other);
         ~Dog();
         void makeSound() const;
-        std::string getType( void ) const; 
+        std::string getType( void ) const;
+        std::string getBIdea(int index) const;
+        void setBIdea(int index, std::string idea);
 };
 
 # endif
