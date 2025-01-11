@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:59:53 by ajabri            #+#    #+#             */
-/*   Updated: 2025/01/11 11:22:52 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/01/11 15:36:51 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Cat::Cat(std::string type) : Animal(type)
     std::cout << "Cat constractor is called" << std::endl;
 }
 
-Cat::Cat(const Cat& other)
+Cat::Cat(const Cat& other) : Animal(other)
 {
     std::cout << "Cat Copy constractor is called" << std::endl;
     *this = other;

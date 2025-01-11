@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:51:08 by ajabri            #+#    #+#             */
-/*   Updated: 2025/01/11 11:23:44 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/01/11 15:27:04 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,9 @@ void Animal::makeSound() const
 std::string Animal::getType( void ) const
 {
     return (this->type);
+}
+
+void Animal::setType(std::string type)
+{
+    this->type = type;
 }
