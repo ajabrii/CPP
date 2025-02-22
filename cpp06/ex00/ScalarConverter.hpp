@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:34:02 by ajabri            #+#    #+#             */
-/*   Updated: 2025/02/22 11:00:13 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/02/22 18:16:08 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,14 @@ class ScalarConverter
         static struct ScalarTypes types;
         static Tflag WitchType;
         static void setFlag(std::string literal);
-    
-        
+        static void convertChar(std::string literal);
+        static void convertInt(std::string literal);
+        static void convertFloat(std::string literal);
+        static void convertDouble(std::string literal);
+        static void printChar();
+        static void printInt();
+        static void printFloat();
+        static void printDouble();
 };
 
 
