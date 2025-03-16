@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:31:56 by ajabri            #+#    #+#             */
-/*   Updated: 2025/03/12 12:34:53 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/03/16 13:58:45 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ class Btc
         std::string _infile;
         std::string _DB;
         std::map<std::string, float> dataBase;
-        std::map<std::string, float> dataInfile;
     public:
         Btc();
         Btc(std::string infile, std::string DB);
@@ -44,7 +43,11 @@ class Btc
         void ReadDB(std::ifstream& DB);
         void OpenInfile(std::ifstream& inFile);
         void ReadinFile(std::ifstream& inFile);
-        void parseData(std::string line);
+        std::string findClosestLowerDate(const std::string& date);
+        void parseData(std::string date, float p);
+        bool processDate(std::string date);
+        std::string Trim(std::string& str);
+        bool isDigit(std::string str);
 };
 
 # endif
