@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:26:12 by ajabri            #+#    #+#             */
-/*   Updated: 2025/03/16 12:16:06 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/03/17 10:55:46 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ std::string Rpn::Trim(std::string& str)
     return str.substr(first, last - first);
 }
 
+
 void Rpn::calculate(std::string expr)
 {
     std::string tmp;
@@ -101,22 +102,21 @@ void Rpn::calculate(std::string expr)
     expr = Trim(expr);
     if (!processExpression()) {
         Logs("Error");
-        return ;
+        return;
     }
+
     while (i < expr.length()) {
-        if (isdigit(expr[i]))
-            start =  i;
-        if ( expr[i] == '+' || expr[i] == '-'){
+        //* Handle signed numbers (positive or negative)
+        if (isdigit(expr[i]) || (expr[i] == '+' && i + 1 < expr.length() && isdigit(expr[i + 1])) || (expr[i] == '-' && i + 1 < expr.length() && isdigit(expr[i + 1]))) {
             start = i;
-            i++;
-            if (isdigit(expr[i]) || i == expr.length()) {
-                // start = i;
-                while (i < expr.length() && isdigit(expr[i])) {
-                    i++;
-                }
+            if (expr[i] == '+' || expr[i] == '-') {
+                i++;
+            }
+            while (i < expr.length() && isdigit(expr[i])) {
+                i++;
+            }
             std::string numStr = expr.substr(start, i - start);
             stack.push(std::atoi(numStr.c_str()));
-            }   
         }
         else if (isOperator(expr[i])) {
             if (stack.size() < 2) {
@@ -131,17 +131,17 @@ void Rpn::calculate(std::string expr)
             else if (expr[i] == '-') stack.push(a - b);
             else if (expr[i] == '*') stack.push(a * b);
             else if (expr[i] == '/') {
-            if (b == 0) {
+                if (b == 0) {
                     Rpn::Logs(RED "Error: Division by zero!" RES);
                     return;
                 }
                 stack.push(a / b);
             }
             i++;
-        } 
+        }
         else if (isspace(expr[i])) {
             i++;
-        } 
+        }
         else {
             Rpn::Logs(RED "Error: Invalid character!" RES);
             return;
@@ -153,4 +153,3 @@ void Rpn::calculate(std::string expr)
         Rpn::Logs(RED "Error: Invalid expression!" RES);
     }
 }
-
