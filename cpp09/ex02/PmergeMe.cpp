@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:56:59 by ajabri            #+#    #+#             */
-/*   Updated: 2025/03/17 10:42:53 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/04/22 11:03:36 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,23 @@ bool PmergeMe::processDataSet(std::string av)
    
    size_t i = 0;
    if (av.empty()) {
-    Logs("Error: Invalid input");
+    Logs(RED"Error: Invalid input"RES);
     return false;
    }
    for (size_t x = 0; x < av.length(); x++) {
        if (isspace(av[x])) {
-           Logs("Error: Invalid input");
+           Logs(RED"Error: Invalid input"RES);
            return (false);
        }
    }  while (av[i])    {
         if (av[i] == '+' && i == 0) {
             i++;
             if (!isdigit(av[i])) {
-                Logs("Error: Invalid input");
+                Logs(RED"Error: Invalid input"RES);
                 return (false);
             }
         } else  if (!isdigit(av[i])) {
-            Logs("Error: Invalid input");
+            Logs(RED"Error: Invalid input"RES);
             return (false);
         }
         i++;
@@ -139,6 +139,5 @@ std::vector<int> PmergeMe::VectorMergeSort(std::vector<int> &vector)
         if (pairs[i].second != -1)
             InsertIntoSortedVector(sorted_vector, pairs[i].second);
     }
-
     return sorted_vector;
 }

@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:38:49 by ajabri            #+#    #+#             */
-/*   Updated: 2025/03/16 14:06:02 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/04/22 11:21:13 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ void Btc::ReadDB(std::ifstream& DB)
         }
         date = lineDB.substr(0, commaPos);
         priceStr = lineDB.substr(commaPos + 1);
+        commaPos = priceStr.find(',');
+        if ( commaPos != std::string::npos) {
+            DexLogs(RED"Error: you changed somthing in the database!"RES);
+            break;
+        }
         price = std::atof(priceStr.c_str());                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         dataBase[date] = price;
     }
@@ -104,12 +109,14 @@ void Btc::ReadinFile(std::ifstream& infile)
         }
         date = line.substr(0, Pos);
         priceStr = line.substr(Pos + 1);
-        price = std::atof(priceStr.c_str());
-        if (price < MIN) {
-            Btc::DexLogs(RED"Error: not a positive number."RES);
-            continue;   
+        priceStr = Trim(priceStr);
+        Pos = priceStr.find('|');
+        if (Pos != std::string::npos) {
+            DexLogs(RED"Error: the  date | value format is not respected!"RES);
+            continue;
         }
-        else if (price > MAX) {
+        price = std::atof(priceStr.c_str());
+        if (price > MAX || price < MIN) {
             Btc::DexLogs(RED"Error: too large a number."RES);
             continue;   
         }
@@ -212,7 +219,8 @@ std::string Btc::findClosestLowerDate(const std::string& date)
 {
     std::map<std::string, float>::iterator it = dataBase.lower_bound(date);
     if (it == dataBase.end() || it->first != date) {
-        if (it == dataBase.begin()) return "";
+        if (it == dataBase.begin())
+            return "";
         --it;
     }
     return it->first;

@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:31:56 by ajabri            #+#    #+#             */
-/*   Updated: 2025/03/16 13:58:45 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/04/22 11:22:37 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string>
 #include <cstdlib>
 # include <map>
+
 #define MIN 0
 #define MAX 1000 
 #define RED "\033[1;31m"

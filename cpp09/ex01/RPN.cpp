@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:26:12 by ajabri            #+#    #+#             */
-/*   Updated: 2025/03/17 10:55:46 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/04/22 11:15:30 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,14 @@ bool Rpn::processExpression()
     Expression = Trim(Expression);
     if(Expression.empty() || Expression.length() == 1 
         || !isOperator(Expression[Expression.length() - 1])) {
-        Logs(RED"Error"RES);
         return false;
     }
     for (size_t i = 0; i < Expression.length(); i++) {
         
-        if (Expression[i] == ' ' || isOperator(Expression[i]) || Expression[i] == '.')
+        if (Expression[i] == ' ' || isOperator(Expression[i]) || Expression[i] == '.') //! check this condition where you check for . is not nessary 
             continue;
         if (isdigit(Expression[i]))
             continue;
-        Logs(RED"Error"RES);
         return false;
     }
     return true;
@@ -101,12 +99,11 @@ void Rpn::calculate(std::string expr)
 
     expr = Trim(expr);
     if (!processExpression()) {
-        Logs("Error");
+        Logs(RED"Error"RES);
         return;
     }
 
     while (i < expr.length()) {
-        //* Handle signed numbers (positive or negative)
         if (isdigit(expr[i]) || (expr[i] == '+' && i + 1 < expr.length() && isdigit(expr[i + 1])) || (expr[i] == '-' && i + 1 < expr.length() && isdigit(expr[i + 1]))) {
             start = i;
             if (expr[i] == '+' || expr[i] == '-') {
@@ -127,9 +124,12 @@ void Rpn::calculate(std::string expr)
             stack.pop();
             a = stack.top();
             stack.pop();
-            if (expr[i] == '+') stack.push(a + b);
-            else if (expr[i] == '-') stack.push(a - b);
-            else if (expr[i] == '*') stack.push(a * b);
+            if (expr[i] == '+')
+                stack.push(a + b);
+            else if (expr[i] == '-')
+                stack.push(a - b);
+            else if (expr[i] == '*')
+                stack.push(a * b);
             else if (expr[i] == '/') {
                 if (b == 0) {
                     Rpn::Logs(RED "Error: Division by zero!" RES);

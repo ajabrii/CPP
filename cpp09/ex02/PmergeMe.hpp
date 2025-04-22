@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:54:33 by ajabri            #+#    #+#             */
-/*   Updated: 2025/03/16 11:20:58 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/04/11 10:19:04 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 # include <deque>
 # include <ctime>
 # include <iomanip>
+
+#define RED "\033[1;31m"
+#define GREEN "\033[1;32m"
+#define YELLOW "\033[1;33m"
+#define RES "\033[0m"
 
 class PmergeMe
 {
