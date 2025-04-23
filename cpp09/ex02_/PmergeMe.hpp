@@ -6,7 +6,7 @@
 /*   By: ajabri <ajabri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 11:54:33 by ajabri            #+#    #+#             */
-/*   Updated: 2025/04/23 11:23:35 by ajabri           ###   ########.fr       */
+/*   Updated: 2025/04/11 10:19:04 by ajabri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ class PmergeMe
         void InsertIntoSortedDeque(std::deque<int> &sorted_deque, int value);
         void InsertIntoSortedVector(std::vector<int> &sorted_vector, int value);
         std::vector<int> VectorMergeSort(std::vector<int> &vector);
-        std::vector<int> JacobsthalSequence(int n);
 };
 
 
