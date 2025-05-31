@@ -43,7 +43,7 @@ class PmergeMe
         std::deque<int> DequeMergeSort(std::deque<int> &deque);
         void InsertIntoSortedDeque(std::deque<int> &sorted_deque, int value);
         void InsertIntoSortedVector(std::vector<int> &sorted_vector, int value);
-        std::vector<int> VectorMergeSort(std::vector<int> &vector);
+        std::vector<int> VectorMergeSort(std::vector<int>& vec);
         std::vector<int> JacobsthalSequence(int n);
 };
 

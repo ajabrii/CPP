@@ -55,23 +55,23 @@ bool PmergeMe::processDataSet(std::string av)
    
    size_t i = 0;
    if (av.empty()) {
-    Logs(RED"Error: Invalid input"RES);
+    Logs("Error: Invalid input");
     return false;
    }
    for (size_t x = 0; x < av.length(); x++) {
        if (isspace(av[x])) {
-           Logs(RED"Error: Invalid input"RES);
+           Logs("Error: Invalid input");
            return (false);
        }
    }  while (av[i])    {
         if (av[i] == '+' && i == 0) {
             i++;
             if (!isdigit(av[i])) {
-                Logs(RED"Error: Invalid input"RES);
+                Logs("Error: Invalid input");
                 return (false);
             }
         } else  if (!isdigit(av[i])) {
-            Logs(RED"Error: Invalid input"RES);
+            Logs("Error: Invalid input");
             return (false);
         }
         i++;
@@ -119,61 +119,63 @@ void PmergeMe::InsertIntoSortedVector(std::vector<int> &sorted_vector, int value
     sorted_vector.insert(it, value);
 }
 
-// std::vector<int> PmergeMe::VectorMergeSort(std::vector<int> &vector)
-// {
-//     if (vector.size() <= 1)
-//         return vector;
-//     std::vector<std::pair<int, int> > pairs;
-//     for (size_t i = 0; i < vector.size(); i += 2) {
-//         if (i + 1 < vector.size())
-//             pairs.push_back(std::make_pair(std::min(vector[i], vector[i + 1]), std::max(vector[i], vector[i + 1])));
-//         else
-//             pairs.push_back(std::make_pair(vector[i], -1));
-//     }
-//     std::vector<int> small_numbers;
-//     for (size_t i = 0; i < pairs.size(); i++)
-//         small_numbers.push_back(pairs[i].first);
-//     small_numbers = VectorMergeSort(small_numbers);
-//     std::vector<int> sorted_vector = small_numbers;
-//     for (size_t i = 0; i < pairs.size(); i++) {
-//         if (pairs[i].second != -1)
-//             InsertIntoSortedVector(sorted_vector, pairs[i].second);
-//     }
-//     return sorted_vector;
-// }
 
-std::vector<int> PmergeMe::VectorMergeSort(std::vector<int> &vector)
-{
-    std::vector<int> big;
-    std::vector<int> small;
-    if (vector.size() <= 1)
-        return vector;
-    for (size_t i = 0; i < vector.size(); i += 2) {
-        if (i + 1 < vector.size())
-            small.push_back(std::min(vector[i], vector[i + 1]));
-        if (i + 1 < vector.size())
-            big.push_back(std::max(vector[i], vector[i + 1]));
-        else
-            big.push_back(vector[i]);
+std::vector<int> PmergeMe::VectorMergeSort(std::vector<int>& vec) {
+    if (vec.size() <= 1)
+        return vec;
+
+    std::vector<int> small, big;
+
+    // Step 1: Pair elements and split into small and big
+    for (size_t i = 0; i < vec.size(); i += 2) {
+        if (i + 1 < vec.size()) {
+            if (vec[i] < vec[i + 1]) {
+                small.push_back(vec[i]);
+                big.push_back(vec[i + 1]);
+            } else {
+                small.push_back(vec[i + 1]);
+                big.push_back(vec[i]);
+            }
+        } else {
+            // Odd element left alone
+            big.push_back(vec[i]);
+        }
     }
-    std::vector<int> sorted_big;
-    // big = VectorMergeSort(big);
-    // sorted_big = big;
-    for (size_t i = 0; i < big.size(); i++)
-        InsertIntoSortedVector(sorted_big, big[i]);
-    std::cout << "Big: ";
-    for (size_t i = 0; i < sorted_big.size(); i++) {
-       std::cout << sorted_big[i] << ", ";
+
+    // Step 2: Recursively sort the bigs
+    std::vector<int> sorted_big = VectorMergeSort(big);
+
+    // Step 3: Insert the first small manually
+    std::vector<int> result = sorted_big;
+    if (!small.empty()) {
+        InsertIntoSortedVector(result, small[0]);
     }
-    std::cout << std::endl;
-    std::cout << "Small: ";
-    for (size_t i = 0; i < small.size(); i++) {
-       std::cout << small[i] << ", ";
+
+    // Step 4: Insert remaining small elements using Jacobsthal order
+    int s = small.size();
+    std::vector<bool> inserted(s, false);
+    inserted[0] = true;
+
+    std::vector<int> jacobsthal = JacobsthalSequence(s);
+
+    for (int i = jacobsthal.size(); i-- > 0;) {
+        int idx = jacobsthal[i];
+        if (idx < s && !inserted[idx]) {
+            InsertIntoSortedVector(result, small[idx]);
+            inserted[idx] = true;
+        }
     }
-    std::cout << std::endl;
-    // std::vector<int> jacobsthal = JacobsthalSequence(big.size());
-    return sorted_big;
+
+    // Step 5: Insert any remaining smalls not in Jacobsthal sequence
+    for (int i = 0; i < s; ++i) {
+        if (!inserted[i]) {
+            InsertIntoSortedVector(result, small[i]);
+        }
+    }
+
+    return result;
 }
+
 
 std::vector<int> PmergeMe::JacobsthalSequence(int n)
 {

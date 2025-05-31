@@ -47,9 +47,9 @@ int main(int ac, char **av)
     std::vector<int> Svector = FordJohnson.VectorMergeSort(Vec);
     // clock_t endVec = clock();
     // std::cout << "After: ";
-    // for (std::deque<int>::iterator it = SDeque.begin(); it != SDeque.end(); it++)
-    //     std::cout << *it << " ";
-    // std::cout << std::endl;
+    for (std::vector<int>::iterator it = Svector.begin(); it != Svector.end(); it++)
+        std::cout << *it << " ";
+    std::cout << std::endl;
     // double Dtime = (double)(endDeque - startTime) * 1e6 / CLOCKS_PER_SEC;
     // double Vtime = (double)(endVec - startTimeVec) * 1e6 / CLOCKS_PER_SEC;
     // std::cout << std::fixed << std::setprecision(6);
